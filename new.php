@@ -51,7 +51,7 @@ function emp() {
                     <div class="mt-5 mb-3 clearfix">
                        
                         <h2>Employees Details</h2>
-                        <a href="create.php" class="btn btn-success pull-right onmousedown="emp(this.value)"> Add New Employee</a>
+                        <a href="create.php" class="btn btn-success pull-right" > Add New Employee</a>
     </div>
     <div id="demo">
                     </div>
@@ -105,6 +105,25 @@ mysqli_close($conn);
 </div></div>
 </div>        
 </div>
+<script type="text/javascript">
+
+    function deleteAjax(id){
+
+        $.ajax({
+            type:'post',
+            url:'delete.php',
+            data:{delete_id:id},
+            success:function(data){
+                $('#delete'+id).hide();
+            }
+            
+
+        });
+
+
+    }
+    </script>
+
 </div>
 <!-- <script>
     $document.readyfunction(){
@@ -129,6 +148,7 @@ mysqli_close($conn);
 
                 }) -->
 
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </body>
 </html>

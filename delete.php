@@ -1,7 +1,7 @@
 <?php
  include "db.php";
 if(isset($_POST["id"]) && !empty($_POST["id"])){
-    
+    $id=$_POST['delete.php'];
     $sql = "DELETE FROM employee WHERE id = ?";
     
     if($stmt = mysqli_prepare($conn, $sql)){
