@@ -33,9 +33,9 @@ include "db.php";
 <html>
     <head>
         <title>View</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-        
+        <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <style>
             .wrapper{
                 width: 600px;
@@ -57,20 +57,20 @@ include "db.php";
                             <div class="col-md-12">
                                 <h1 class="mt-5 mb-3">View Employee</h1>
                                 <div class="form-group">
-                                    <p><label> Name:</label>
-                                    <b><?php echo $row["name"]; ?></b></p>
+                                <b> <p><label> Name:</label></b>
+                                    <?php echo $row["name"]; ?></p>
                 </div>
                 <div class="form-group">
-                <p> <label> Designation: </label>
-                                   <b> <?php echo $row["designation"]; ?></b></p>
+                <p> <b><label> Designation: </label></b>
+                                    <?php echo $row["designation"]; ?></p>
                 </div>
                 <div class="form-group">
-                                    <p>  <label> Contact:</label>
-                                    <b><?php echo $row["contact"]; ?></b></p>
+                <b> <p>  <label> Contact:</label></b>
+                                    <?php echo $row["contact"]; ?></p>
                 </div>
                 <div class="form-group">
-                                     <p> <label> email:</label>
-                                    <b><?php echo $row["email"]; ?></b></p>
+                                    <b><p> <label> email:</label></b>
+                                    <?php echo $row["email"]; ?></p>
                 </div>
                <p><a href= "new.php" class="btn btn-primary">Back</a></p>
                

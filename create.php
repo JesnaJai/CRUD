@@ -10,7 +10,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $input_name = trim($_POST["name"]);
     if(empty($input_name)){
         $name_err = "Please enter a name.";
-    } else{
+    }elseif (!preg_match("/^[a-zA-Z-' ]*$/",$input_name)) {
+        $name_err = "Only letters and white space allowed";
+      } 
+    else{
         $name = $input_name;
     }
 
@@ -25,13 +28,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($input_contact)){
         $contact_err = "Please enter the contact .";     
     
-    } else{
+    } elseif(!preg_match('/^[0-9]{10}+$/', $input_contact)){
+        $contact_err="Invalid Contact";
+    }else{
         $contact = $input_contact;
     }
    
     $input_email=trim($_POST["email"]);
     if(empty($input_email)){
         $email_err=" Please enter the email .";
+    }elseif(!filter_var($input_email, FILTER_VALIDATE_EMAIL)) {
+        $email_err = "Invalid email format";
     }else{
         $email= $input_email;
     }
@@ -75,27 +82,49 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta charset="UTF-8">
     <title>Create Record</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+      
+   
     <style>
         .wrapper{
-            width: 1000px;
+            width: 500px;
             margin: 0 auto;
         }
     </style>
+    <script>
+$(document).ready(function(){
+		$('submit').click(function(event){
+			event.preventDefault();
+			var	name = $('#name').val();
+			var	designation = $('#designation').val();
+			var	contact = $('#contact').val();
+			var	email = $('#email').val();
+			$.ajax({
+			    type: "POST",
+			    url: "new.php",
+			    data: { name:name, designation:designation, contact:contact, email:email },		    
+			    dataType: "json",
+			    success: function(result){
+			        			    }
+			});
+		});
+	});
+    </script>
 
-<!-- <script>
-function emp1() {
+// <!-- <script>
+// function emp1() {
  
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("demo").innerHTML = this.responseText;
-      }
-    };
-    xmlhttp.open("GET", "create.php", true);
-    xmlhttp.send();
-  }
-}
-</script> -->
+//     var xmlhttp = new XMLHttpRequest();
+//     xmlhttp.onreadystatechange = function() {
+//       if (this.readyState == 4 && this.status == 200) {
+//         document.getElementById("demo").innerHTML = this.responseText;
+//       }
+//     };
+//     xmlhttp.open("GET", "create.php", true);
+//     xmlhttp.send();
+//   }
+// }
+// </script> -->
 </head>
 <body>
     <div class="wrapper">
@@ -103,7 +132,7 @@ function emp1() {
             <div class="row">
                 <div class="col-md-12">
                     <h2 class="mt-5">Create</h2>
-                        <div class="alert alert-success" id="result">
+                     
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="form-group">
                            <p> <label>Name</label>
@@ -125,9 +154,9 @@ function emp1() {
                             <input type="text" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>">
                             <span class="invalid-feedback"><?php echo $email_err;?></span>
                         </div>
-                      <p>  <input type="submit" class="btn btn-primary" onClick="emp1(this.value)" value="Submit">
+                      <p>  <input type="submit" class="btn btn-primary"  value="Submit">
                         <a href="new.php" class="btn btn-secondary ml-2"  >Cancel</a></P>
-                    </form><span id="demo"></span>
+                    </form>
                 </div>
             </div>        
         </div>
