@@ -82,8 +82,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta charset="UTF-8">
     <title>Create Record</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-      
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> -->
+  
    
     <style>
         .wrapper{
@@ -91,40 +91,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             margin: 0 auto;
         }
     </style>
-    <script>
-$(document).ready(function(){
-		$('submit').click(function(event){
-			event.preventDefault();
-			var	name = $('#name').val();
-			var	designation = $('#designation').val();
-			var	contact = $('#contact').val();
-			var	email = $('#email').val();
-			$.ajax({
-			    type: "POST",
-			    url: "new.php",
-			    data: { name:name, designation:designation, contact:contact, email:email },		    
-			    dataType: "json",
-			    success: function(result){
-			        			    }
-			});
-		});
-	});
-    </script>
+   
 
-// <!-- <script>
-// function emp1() {
- 
-//     var xmlhttp = new XMLHttpRequest();
-//     xmlhttp.onreadystatechange = function() {
-//       if (this.readyState == 4 && this.status == 200) {
-//         document.getElementById("demo").innerHTML = this.responseText;
-//       }
-//     };
-//     xmlhttp.open("GET", "create.php", true);
-//     xmlhttp.send();
-//   }
-// }
-// </script> -->
 </head>
 <body>
     <div class="wrapper">
@@ -133,8 +101,10 @@ $(document).ready(function(){
                 <div class="col-md-12">
                     <h2 class="mt-5">Create</h2>
                      
-                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                        <div class="form-group">
+                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                     
+                       
+                     <div class="form-group">
                            <p> <label>Name</label>
                             <input type="text" name="name" class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $name; ?>">
                             <span class="invalid-feedback"><?php echo $name_err;?></span>
@@ -156,27 +126,15 @@ $(document).ready(function(){
                         </div>
                       <p>  <input type="submit" class="btn btn-primary"  value="Submit">
                         <a href="new.php" class="btn btn-secondary ml-2"  >Cancel</a></P>
+
+                    
                     </form>
                 </div>
             </div>        
         </div>
     </div>
-   <!-- <script type="text/javascript">
-    $document.ready(function(){
-
-        $("#add").click(function(event){
-            event.preventDefault();
-            event.propagation();
-            $ajax({
-                url:"add.php",
-                method:"POST",
-                data:$("#form").serialize(),
-                success:function(data){
-                    $("#result").html(data);
-                }
-            });
-        });
-        
-    }); -->
+   
 </body>
 </html>
+
+

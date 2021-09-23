@@ -142,6 +142,8 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         <input type="hidden" name= "id" value="<?php echo $id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Update">
                         <a href="new.php" class="btn btn-secondary ml-2">Cancel</a>
+
+                        
                     </form>
                 </div>
             </div>        
@@ -149,3 +151,32 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     </div>
 </body>
 </html>
+<!-- <script type="text/javascript">
+	$('.update').click(function() {
+		var name = $(this).attr('#name');
+        var designation= $('#designation').val();
+        var contact = $('#contact').val();
+        var email = $('#email').val();
+
+        $.ajax({
+            url: "update.php",
+            type: "POST",
+            data: { name: name, designation: designation, contact: contact, email: email },
+            success: function(data, status, xhr) {
+                $('#name').val('');
+                $('#designation').val('');
+                $('#contact').val('');
+                $('#email').val('');
+                $('#records_content').fadeOut(1100).html(data);
+                $.get("new.php", function(html) {
+                    $("#table_content").html(html);
+                });
+                $('#records_content').fadeOut(1100).html(data);
+            },
+            // complete: function() {
+            //     $('#link-add').hnamee();
+            //     $('#show-add').show(700);
+            // }
+        });
+    }); // upd
+    </script> -->

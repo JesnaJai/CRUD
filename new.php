@@ -3,10 +3,12 @@
  <html>
     <head>
         <title>Welcome</title>
-       <link rel="stylesheet" type="text/css" href="style.css">
-       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-      
+       <link rel="stylesheet" type="text/css" href="style.css"> 
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    //   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js">
+     
+    
         <style>
         .wrapper{
             width: 960px;
@@ -22,48 +24,31 @@
             
         }
     </style>
-    <script>
-    $(document).ready(function(){
-    $("button").click(function(){
-             $.ajax({url: "create.php", success: function(result){
-             $("#div1").html(result);
-    }});
-  });
-});
-</script>
+    
+
     <script>
         $(document).ready(function(){
           $('[data-toggle="tooltip"]').tooltip();   
               });
-    </script>
-//       <script>
-         
-//       var xmlhttp = new XMLHttpRequest();
-//       xmlhttp.onreadystatechange = function() {
-//     if (this.readyState == 4 && this.status == 200) {
-//          document.getElementById("demo").innerHTML = this.responseText;
-//        }
-//     };
-//      xmlhttp.open("GET", "create.php", true);
-//       xmlhttp.send();
-//    }
-//        </script> 
+    </script> 
 
 </head>
     <body>
-    <div id="demo"> 
-        <div id="div1">
+   
+  
         <div class="wrapper">
         <div class="container">
             <div class="table">
             <div class="row">
                 <div class="col-md-3">
                     <div class="mt-5 mb-3 clearfix">
-                       
+                  
                         <h2>Employees Details</h2>
-                        <a href="create.php" class="btn btn-success " onclick="the_function()" > Add New Employee</a>  
-                       <!-- <button type="button" action="create.php" onclick="the_function()" class="btn btn-success">Add New Employee</button></a>  -->
-    </div></div></div>  
+                         <a href="create.php" class="btn btn-success " > Add New Employee</a> 
+                         
+                       
+                        
+                    </div></div></div></div> 
      
                     <?php
                          include "db.php";
@@ -114,53 +99,10 @@
 mysqli_close($conn);
 ?>
 </div>
-</div>  
-                        
-<!-- </div> -->
-<!-- <script type="text/javascript">
-
-    function deleteAjax(id){
-
-        $.ajax({
-            type:'post',
-            url:'delete.php',
-            data:{delete_id:id},
-            success:function(data){
-                $('#delete'+id).hide();
-            }
-            
-
-        });
-
-
-    }
-    </script> -->
 </div>
-</div>
-<!-- <script>
-    $document.readyfunction(){
 
-        function create(){
-            $ajax({
-                url:"create.php",
-                method:"POST",
-                success:function(data){
-                    $(".result").htlm(data);
-                }
-            });
-         }
-         $document.on('Click','.delete',function(){
-                var id= $(this).attr("id");
-                $ajax({
-                    url: "delete.php",
-                    method: 'POST',
-                    data:{id,id},
-                    success:function(data){
-                        
 
-                }) -->
 
-              
 </body>
 </html>
 
