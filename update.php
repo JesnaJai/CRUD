@@ -104,12 +104,35 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     <meta charset="UTF-8">
     <title>Update Record</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
     <style>
         .wrapper{
             width: 600px;
             margin: 0 auto;
         }
     </style>
+
+<script>
+      $(document).ready(function(){
+
+        $('form').on('submit', function (e) {
+            $('a').click(function(event) {
+          e.preventDefault();
+
+          $.ajax({
+            type: 'post',
+            url: 'new.php',
+            data: $('form').serialize(),
+            success: function () {
+              alert('form was submitted');
+            }
+          });
+
+        });
+
+      });
+    </script>
+
 </head>
 <body>
     <div class="wrapper">
@@ -142,8 +165,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         <input type="hidden" name= "id" value="<?php echo $id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Update">
                         <a href="new.php" class="btn btn-secondary ml-2">Cancel</a>
-
-                        
+                       
                     </form>
                 </div>
             </div>        

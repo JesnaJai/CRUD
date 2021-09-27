@@ -5,8 +5,8 @@
         <title>Welcome</title>
        <link rel="stylesheet" type="text/css" href="style.css"> 
        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-    //   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js">
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    <!-- //   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"> -->
      
     
         <style>
@@ -24,8 +24,24 @@
             
         }
     </style>
-    
-
+    <script type="text/javascript">
+    $(document).ready(function(){
+    $('a').click(function(event) { 
+        // $('create').ready(function(){
+    event.preventDefault(); 
+    $.ajax({
+         url: $(this).attr('href'),
+          type:'POST';
+        success: function(response) {
+            alert(response);
+        }
+    });
+    return false;
+});
+    });
+    });
+     
+</script>
     <script>
         $(document).ready(function(){
           $('[data-toggle="tooltip"]').tooltip();   
@@ -34,7 +50,8 @@
 
 </head>
     <body>
-   
+    <div class="credits">
+
   
         <div class="wrapper">
         <div class="container">
@@ -44,11 +61,11 @@
                     <div class="mt-5 mb-3 clearfix">
                   
                         <h2>Employees Details</h2>
-                         <a href="create.php" class="btn btn-success " > Add New Employee</a> 
+                         <a href="create.php" class="btn btn-primary" > Add New Employee</a> 
                          
                        
                         
-                    </div></div></div></div> 
+                    </div></div></div></div> </div>
      
                     <?php
                          include "db.php";
